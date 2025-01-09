@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
+import BlogPost from '../components/BlogPost.astro';
+import WorkInProgressSign from '../components/WorkInProgressSign.astro';
+
+const allPosts = await getCollection('posts');
+---
+<MainLayout title="Blog">
+    <WorkInProgressSign/>
+    <!-- <ul>
+        {
+            allPosts.map((post: any) => 
+                <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
+            )
+        }
+    </ul> -->
+</MainLayout>

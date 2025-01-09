@@ -1,0 +1,30 @@
+---
+// Navigation.astro
+---
+<nav class="nav-links flex justify-center items-center">
+    <a href="/">Home</a>
+    <a href="/blog">Blog</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+</nav>
+
+<style>
+    .nav-links {
+      padding: 1rem;
+      /* background-color: #f8f9fa; */
+      display: flex;
+      gap: 1rem;
+    }
+  
+    a {
+      color: #333;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+  
+    a:hover {
+      background-color: #e9ecef;
+    }
+</style>

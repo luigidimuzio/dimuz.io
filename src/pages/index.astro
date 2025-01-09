@@ -1,11 +1,23 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import stickerImage from '@assets/sticker.png';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { getEntry, render } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BusinessCard from '../components/BusinessCard.astro';
 ---
-
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout title="Luigi Di Muzio">
+	<div class="space-y-6">
+		<BusinessCard/>
+		<section>	
+			<div class="space-y-1">
+				<h2 class="text-2xl font-bold">Hi, this is Luigi! 👋</h2>
+				<p class="text-xl">I'm an experienced Swift developer and Product Manager specialised in Apple platforms.</p>
+			</div>
+		</section>
+		<section>
+			<p class="text-m">I’ve spent the last 10 years building apps and working with different teams to make digital products.</p>
+			<p class="text-m">These days, I’m focused on some indie projects and sharing what I learn along the way.</p>
+	</section>
+  	</div>
+</MainLayout>
