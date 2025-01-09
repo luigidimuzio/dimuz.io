@@ -8,7 +8,5 @@ import netlify from '@astrojs/netlify';
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  adapter: netlify({
-    imageCDN: false,
-  })
+  adapter: netlify()
 });
