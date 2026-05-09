@@ -1,0 +1,30 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+}
+
+const { size = 16, class: className } = Astro.props;
+---
+
+<svg
+  class:list={["arrow", className]}
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 17L17 7M17 7H7M17 7v10"></path>
+</svg>
+
+<style>
+  .arrow {
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  }
+</style>

@@ -1,0 +1,151 @@
+---
+export interface Props {
+  title?: string;
+  href?: string;
+  /** Grid column span: 1, 2, 3, or 'full' (all 4 columns) */
+  colSpan?: 1 | 2 | 3 | 'full';
+  /** Grid row span */
+  rowSpan?: 1 | 2 | 3 | 4;
+  variant?: 'default' | 'accent' | 'gradient' | 'ghost';
+  /** If true, removes inner padding — useful for images / media */
+  flush?: boolean;
+  class?: string;
+}
+
+const {
+  title,
+  href,
+  colSpan = 1,
+  rowSpan = 1,
+  variant = 'default',
+  flush = false,
+  class: className = '',
+} = Astro.props;
+
+const Tag = href ? 'a' : 'div';
+const extraAttrs = href ? { href, target: href.startsWith('http') ? '_blank' : undefined, rel: href.startsWith('http') ? 'noopener noreferrer' : undefined } : {};
+
+const colClass = colSpan === 'full' ? 'col-full' : `col-${colSpan}`;
+const rowClass = `row-${rowSpan}`;
+---
+<Tag
+  class:list={[
+    'widget',
+    colClass,
+    rowClass,
+    `widget--${variant}`,
+    flush && 'widget--flush',
+    className,
+  ]}
+  {...extraAttrs}
+>
+  {title && <h3 class="widget-title">{title}</h3>}
+  <div class="widget-content">
+    <slot />
+  </div>
+</Tag>
+
+<style>
+  .widget {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .widget--flush {
+    padding: 0;
+  }
+
+  .widget--flush .widget-title {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.5rem;
+    z-index: 10;
+    padding: 0.2rem 0.5rem;
+    background: rgba(var(--bg-rgb), 0.5);
+    backdrop-filter: blur(4px);
+    border-radius: 6px;
+  }
+
+  a.widget {
+    cursor: pointer;
+  }
+
+  a.widget:hover {
+    border-color: var(--border-hover);
+    background: var(--surface-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--shadow-hover);
+  }
+
+  /* Column spans (for a 4-column grid) */
+  .col-full { grid-column: 1 / -1; }
+  .col-4    { grid-column: span 4; }
+  .col-3    { grid-column: span 3; }
+  .col-2    { grid-column: span 2; }
+  .col-1    { grid-column: span 1; }
+
+  /* Row spans */
+  .row-4 { grid-row: span 4; }
+  .row-3 { grid-row: span 3; }
+  .row-2 { grid-row: span 2; }
+  .row-1 { grid-row: span 1; }
+
+  /* Variants */
+  .widget--accent {
+    background: var(--accent-widget-bg);
+    border-color: var(--accent-widget-border);
+  }
+
+  a.widget--accent:hover {
+    border-color: var(--accent-widget-border-hover);
+  }
+
+  .widget--gradient {
+    background: var(--gradient-widget-bg);
+    border-color: var(--gradient-widget-border);
+  }
+
+  .widget--ghost {
+    background: transparent;
+    border-color: transparent;
+    padding: 0;
+  }
+
+  a.widget--ghost:hover {
+    background: var(--surface-hover);
+    border-color: var(--border);
+  }
+
+  .widget-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+    margin: 0;
+  }
+
+  .widget-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 860px) {
+    .col-3, .col-4 { grid-column: span 2; }
+  }
+
+  @media (max-width: 560px) {
+    .col-1, .col-2, .col-3, .col-4, .col-full { grid-column: 1 / -1; }
+    .row-2, .row-3, .row-4 { grid-row: auto; }
+  }
+</style>

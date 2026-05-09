@@ -1,30 +1,160 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import { Image } from 'astro:assets';
-import macbookMemoji from '../assets/memoji-macbook.png';
+import MainLayout from "../layouts/MainLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Widget from "../components/Widget.astro";
+import Arrow from "../components/Arrow.astro";
+import RatingStars from "../components/RatingStars.astro";
+import WebIcon from "../components/WebIcon.astro";
 ---
-<MainLayout title="Luigi Di Muzio">
-	<div class="space-y-6">
-		<section>
-			<div class="flex flex-col items-center mt-8 mb-16">
-				<Image class="max-w-44" src={macbookMemoji} alt="Memoji of Luigi behind a MacBook"/>
-				<h1 class="text-3xl text-center font-bold">Luigi Di Muzio</h1>
-				<p class="text-xl text-center whitespace-nowrap">iOS Developer | Product Manager | Indie Maker</p>
-			</div>
-		</section>
-		<section>
-			<div class="space-y-1">
-				<h2 class="text-xl font-bold">Hello, this is Luigi! 👋</h2>
-				<p class="text-m">
-					I am a Swift Developer and Product Manager specialised in Apple platforms.
-				</p>
-				<p class="text-m">
-					I’ve spent the last 10 years building apps and working with different teams to make digital products.
-				<!-- </p>
-				<p class="text-m"> -->
-					These days, I’m focused on some indie projects and sharing what I learn along the way.
-				</p>
-			</div>
-		</section>
-  	</div>
+
+<MainLayout
+  title="Luigi Di Muzio — iOS Developer, Product Manager & Indie Maker"
+>
+  <div class="page max-w-[800px]">
+    <Sidebar />
+
+    <main class="grid-area">
+      <!-- ═══ Pointerly ═══ -->
+      <section class="widget-section">
+        <div class="section-header">
+          <h2 class="section-label">Pointerly</h2>
+          <div class="section-badge">Live on the Mac App Store</div>
+        </div>
+        <div class="bento-grid">
+          <!-- App description -->
+          <Widget colSpan={2} rowSpan={1} href="https://pointerly.app">
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-2">
+                <img
+                  src="/pointerly-logo.svg"
+                  alt="Pointerly icon"
+                  width="24"
+                  height="24"
+                />
+                <div class="text-md font-semibold text-muted">Pointerly</div>
+              </div>
+              <div>
+                <p class="text-sm text-subtle">
+                  Pointerly is a macOS utility that enhances your presentations
+                  by adding a laser pointer, spotlight, and other visual aids to
+                  your cursor.
+                </p>
+              </div>
+            </div>
+          </Widget>
+
+          <!-- Comet animation -->
+          <Widget colSpan={2} rowSpan={1} flush class="focus-widget">
+            <div class="media-fill">
+              <img
+                src="/comet.gif"
+                alt="Pointerly comet highlighter style in action"
+                loading="eager"
+              />
+            </div>
+          </Widget>
+
+          <!-- Spotlight animation -->
+          <Widget colSpan={1} rowSpan={1} flush class="focus-widget">
+            <div class="media-fill">
+              <img
+                src="/raffaello.gif"
+                alt="Pointerly spotlight highlighting in action on macOS"
+                loading="eager"
+              />
+            </div>
+          </Widget>
+
+          <!-- Tagline -->
+          <Widget colSpan={1} rowSpan={1}>
+            <div class="flex gap-4 items-center">
+              <div>
+                <p class="text-md text-muted">
+                  Point. Highlight. Guide your audience.
+                </p>
+              </div>
+            </div>
+          </Widget>
+
+          <!-- App Store Rating -->
+          <Widget>
+            <div class="flex flex-col items-center justify-center h-full gap-1">
+              <div class="text-[10px] font-medium text-muted uppercase">
+                13 ratings
+              </div>
+              <h4 class="text-2xl font-bold">4.4</h4>
+              <RatingStars rating={4.4} size={12} />
+            </div>
+          </Widget>
+
+          <!-- App Store Link -->
+          <Widget
+            href="https://apps.apple.com/app/pointerly/id6741108220"
+            flush
+          >
+            <div class="flex flex-col justify-start h-full p-6 gap-2">
+              <div class="">
+                <img
+                  src="/appstore-icon.png"
+                  alt="AppStore Icon"
+                  width="24"
+                  height="24"
+                />
+              </div>
+              <div class="identity-content flex flex-col gap-1">
+                <div class="flex gap-2 items-start">
+                  <h4 class="identity-headline">View on the App Store</h4>
+                  <Arrow size={16} />
+                </div>
+                <p class="identity-caption">apps.apple.com</p>
+              </div>
+            </div>
+          </Widget>
+        </div>
+        <div class="section-footer">
+          <div class="footer-links">
+            <a href="https://pointerly.app" target="_blank" class="footer-link">
+              Website <Arrow size={10} />
+            </a>
+            <a
+              href="https://pointerly.app/build-in-public"
+              target="_blank"
+              class="footer-link"
+            >
+              Product Log <Arrow size={10} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ Skills & Extras ═══ -->
+      <!-- <section class="widget-section">
+        <h2 class="section-label">Expertise</h2>
+        <div class="bento-grid">
+          <Widget title="Core Tech" colSpan={2}>
+            <div class="skill-tags">
+              <span class="tag">Swift</span>
+              <span class="tag">SwiftUI</span>
+              <span class="tag">UIKit</span>
+              <span class="tag">macOS SDK</span>
+              <span class="tag">iOS SDK</span>
+            </div>
+          </Widget>
+
+          <Widget title="Product" colSpan={2}>
+            <div class="skill-tags">
+              <span class="tag">Product Strategy</span>
+              <span class="tag">User Experience</span>
+              <span class="tag">Indie Hacking</span>
+              <span class="tag">Agile PM</span>
+            </div>
+          </Widget>
+        </div>
+      </section> -->
+
+      <footer class="footer">
+        <p>&copy; {new Date().getFullYear()} Luigi Di Muzio</p>
+      </footer>
+    </main>
+  </div>
 </MainLayout>
