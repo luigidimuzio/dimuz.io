@@ -1,39 +1,52 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
+import memojiFavicon from "../assets/memoji-macbook.png";
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = "Luigi Di Muzio — iOS Developer, Product Manager & Indie Maker" } = Astro.props;
+const {
+  title,
+  description = "Luigi Di Muzio — Product Manager & Indie Maker",
+} = Astro.props;
 ---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href={memojiFavicon.src} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>{title}</title>
 
     <!-- Inline theme script to prevent FOUC (flash of unstyled content) -->
     <script is:inline>
-      (function() {
-        const stored = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
 
         let resolved;
-        if (stored === 'light' || stored === 'dark') {
+        if (stored === "light" || stored === "dark") {
           resolved = stored;
         } else {
-          resolved = prefersDark ? 'dark' : 'light';
+          resolved = prefersDark ? "dark" : "light";
         }
 
-        document.documentElement.setAttribute('data-theme', resolved);
-        document.documentElement.setAttribute('data-theme-setting', stored || 'system');
+        document.documentElement.setAttribute("data-theme", resolved);
+        document.documentElement.setAttribute(
+          "data-theme-setting",
+          stored || "system",
+        );
       })();
     </script>
   </head>
