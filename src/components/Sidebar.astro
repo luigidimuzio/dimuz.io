@@ -24,7 +24,8 @@ import ThemeToggle from "./ThemeToggle.astro";
       </div>
       <h1 class="name">Luigi Di Muzio</h1>
       <p class="tagline">
-        Engineer turned PM turned... whatever this is now 🤷‍♂️
+        Engineer turned PM turned...<br />
+        whatever this is now 🤷‍♂️
       </p>
     </div>
 
@@ -77,32 +78,28 @@ import ThemeToggle from "./ThemeToggle.astro";
     position: sticky;
     top: 0;
     height: 100dvh;
-    width: 320px;
-    min-width: 320px;
+    width: 350px;
+    min-width: 350px;
     padding: var(--gap);
     padding-right: 0;
   }
 
   .sidebar-inner {
     height: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem 1.75rem 2rem;
+    /* Removed card background and border */
+    padding: 1.5rem 0 1rem; /* Balanced top padding */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
-    transition:
-      background-color 0.3s ease,
-      border-color 0.3s ease;
+    justify-content: flex-start; /* Move up! */
+    gap: 2.5rem;
+    position: relative;
   }
 
   .sidebar-top {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    z-index: 50;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
   }
 
   .profile {
@@ -110,14 +107,14 @@ import ThemeToggle from "./ThemeToggle.astro";
   }
 
   .name {
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     margin-bottom: 0.35rem;
   }
 
   .tagline {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     font-weight: 500;
   }
