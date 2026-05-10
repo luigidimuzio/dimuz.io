@@ -5,21 +5,22 @@ import Widget from "../components/Widget.astro";
 import Arrow from "../components/Arrow.astro";
 import RatingStars from "../components/RatingStars.astro";
 import WebIcon from "../components/WebIcon.astro";
+import Badge from "../components/Badge.astro";
+import SectionHeader from "../components/SectionHeader.astro";
 ---
 
-<MainLayout
-  title="Luigi Di Muzio — iOS Developer, Product Manager & Indie Maker"
->
+<MainLayout title="Luigi Di Muzio — Product Manager & Indie Maker">
   <div class="page max-w-[800px]">
     <Sidebar />
 
     <main class="grid-area">
       <!-- ═══ Pointerly ═══ -->
+
+      <SectionHeader title="Currently Building 👇" align="center" />
       <section class="widget-section">
-        <div class="section-header">
-          <h2 class="section-label">Pointerly</h2>
-          <div class="section-badge">Live on the Mac App Store</div>
-        </div>
+        <SectionHeader title="Pointerly" align="left">
+          <Badge text="Live on the Mac App Store" variant="emerald" />
+        </SectionHeader>
         <div class="bento-grid">
           <!-- App description -->
           <Widget colSpan={2} rowSpan={1} href="https://pointerly.app">
@@ -44,23 +45,23 @@ import WebIcon from "../components/WebIcon.astro";
           </Widget>
 
           <!-- Comet animation -->
-          <Widget colSpan={2} rowSpan={1} flush class="focus-widget">
+          <Widget colSpan={2} rowSpan={1} flush>
             <div class="media-fill">
               <img
                 src="/comet.gif"
                 alt="Pointerly comet highlighter style in action"
-                loading="eager"
+                loading="lazy"
               />
             </div>
           </Widget>
 
           <!-- Spotlight animation -->
-          <Widget colSpan={1} rowSpan={1} flush class="focus-widget">
+          <Widget colSpan={1} rowSpan={1} flush>
             <div class="media-fill">
               <img
                 src="/raffaello.gif"
                 alt="Pointerly spotlight highlighting in action on macOS"
-                loading="eager"
+                loading="lazy"
               />
             </div>
           </Widget>
@@ -114,43 +115,109 @@ import WebIcon from "../components/WebIcon.astro";
         <div class="section-footer">
           <div class="footer-links">
             <a href="https://pointerly.app" target="_blank" class="footer-link">
-              Website <Arrow size={10} />
+              Check the Website <Arrow size={10} />
             </a>
             <a
               href="https://pointerly.app/build-in-public"
               target="_blank"
               class="footer-link"
             >
-              Product Log <Arrow size={10} />
+              Read the Product Log <Arrow size={10} />
             </a>
           </div>
         </div>
       </section>
 
-      <!-- ═══ Skills & Extras ═══ -->
-      <!-- <section class="widget-section">
-        <h2 class="section-label">Expertise</h2>
+      <section class="widget-section">
+        <SectionHeader title="DalSegno" align="left">
+          <Badge text="Now in Private Beta" variant="amber" />
+        </SectionHeader>
         <div class="bento-grid">
-          <Widget title="Core Tech" colSpan={2}>
-            <div class="skill-tags">
-              <span class="tag">Swift</span>
-              <span class="tag">SwiftUI</span>
-              <span class="tag">UIKit</span>
-              <span class="tag">macOS SDK</span>
-              <span class="tag">iOS SDK</span>
+          <!-- App description -->
+          <Widget colSpan={2} rowSpan={1}>
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-2">
+                <img
+                  src="/dslogo.jpg"
+                  alt="DalSegno icon"
+                  width="24"
+                  height="24"
+                />
+                <div class="text-md font-semibold text-muted">DalSegno</div>
+              </div>
+              <div>
+                <p class="text-sm text-subtle">
+                  DalSegno is a platform for music teachers, a unified place to
+                  manage their schedule, students, lessons and homeworks.
+                </p>
+              </div>
             </div>
           </Widget>
 
-          <Widget title="Product" colSpan={2}>
-            <div class="skill-tags">
-              <span class="tag">Product Strategy</span>
-              <span class="tag">User Experience</span>
-              <span class="tag">Indie Hacking</span>
-              <span class="tag">Agile PM</span>
+          <!-- Early Adopters -->
+          <Widget>
+            <div class="flex flex-col items-center justify-center h-full gap-1">
+              <div class="text-[10px] font-medium text-muted uppercase">
+                Teachers in the beta
+              </div>
+              <h4 class="text-2xl font-bold">5</h4>
+              <div class="text-xs text-subtle">with 170 students in total</div>
+            </div>
+          </Widget>
+
+          <!-- App Store Rating -->
+          <Widget>
+            <div class="flex flex-col items-center justify-center h-full gap-1">
+              <div class="text-[10px] font-medium text-muted uppercase">
+                Lessons managed
+              </div>
+              <h4 class="text-2xl font-bold">2500+</h4>
+              <div class="text-xs text-subtle">in the first 6 months</div>
             </div>
           </Widget>
         </div>
-      </section> -->
+      </section>
+
+      <!-- ═══ Skills & Extras ═══ -->
+      <section class="widget-section">
+        <SectionHeader title="Expertise" align="center" />
+        <div class="bento-grid">
+          <Widget title="Product Skills" colSpan={2}>
+            <div class="skill-tags">
+              <span class="tag">Product Strategy</span>
+              <span class="tag">Product Discovery</span>
+              <span class="tag">A/B Testing</span>
+              <span class="tag">Product Analytics</span>
+              <span class="tag">Data Analysis</span>
+              <span class="tag">SQL</span>
+            </div>
+          </Widget>
+
+          <Widget title="Builder Skills" colSpan={2}>
+            <div class="skill-tags">
+              <span class="tag">Swift</span>
+              <span class="tag">SwiftUI</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">Figma</span>
+              <span class="tag">Claude</span>
+              <span class="tag">Antigravity</span>
+              <span class="tag">v0</span>
+              <span class="tag">Fly.io</span>
+              <span class="tag">Supabase</span>
+            </div>
+          </Widget>
+
+          <Widget title="Industry Experience" colSpan={2}>
+            <div class="skill-tags">
+              <span class="tag">EdTech</span>
+              <span class="tag">FinTech</span>
+              <span class="tag">Apps</span>
+              <span class="tag">Agency work</span>
+              <span class="tag">Saas</span>
+            </div>
+          </Widget>
+        </div>
+      </section>
 
       <footer class="footer">
         <p>&copy; {new Date().getFullYear()} Luigi Di Muzio</p>

@@ -1,0 +1,60 @@
+---
+interface Props {
+  gifSrc: string;
+  alt?: string;
+  class?: string;
+}
+
+const { gifSrc, alt = "", class: className } = Astro.props;
+---
+
+<div class:list={["playable-gif group", className]}>
+  <img 
+    src={gifSrc} 
+    alt={alt} 
+    class="gif-element grayscale group-hover:grayscale-0 transition-all duration-500"
+    data-gif={gifSrc}
+  />
+</div>
+
+<script>
+  // This script force-resets the GIF to frame 1 on hover
+  const containers = document.querySelectorAll('.playable-gif');
+  
+  containers.forEach(container => {
+    const img = container.querySelector('img');
+    if (!img) return;
+
+    container.addEventListener('mouseenter', () => {
+      const src = img.getAttribute('data-gif');
+      if (src) {
+        // Appending a timestamp or just re-setting the src 
+        // can force some browsers to restart the animation
+        img.src = '';
+        img.src = src;
+      }
+    });
+  });
+</script>
+
+<style>
+  .playable-gif {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--surface);
+    cursor: pointer;
+  }
+
+  .gif-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+  }
+
+  .playable-gif:hover .gif-element {
+    opacity: 1;
+  }
+</style>

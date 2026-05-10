@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  align?: 'left' | 'right' | 'center';
+  class?: string;
+}
+
+const { title, align = 'left', class: className } = Astro.props;
+---
+
+<div class:list={[
+  "section-header", 
+  align === 'right' && "section-header--right",
+  align === 'center' && "section-header--center",
+  className
+]}>
+  <h2 class="section-label">{title}</h2>
+  <slot />
+</div>
+
+<style>
+  .section-header--right {
+    justify-content: flex-end;
+    padding-right: 0.25rem;
+    padding-left: 0;
+  }
+
+  .section-header--center {
+    justify-content: center;
+    padding-left: 0;
+  }
+</style>

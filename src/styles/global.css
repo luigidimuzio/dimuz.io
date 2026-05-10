@@ -96,7 +96,6 @@ img {
 /* ─── Layout ─── */
 .page {
   display: flex;
-  align-items: flex-start;
   min-height: 100dvh;
   max-width: 1200px;
   margin: 0 auto;
@@ -155,7 +154,8 @@ img {
 
 .footer-links {
   margin-top: 0.5rem;
-  justify-content: flex-end; /* Align to the right to feel like a closing tag */
+  justify-content: flex-end;
+  /* Align to the right to feel like a closing tag */
 }
 
 .header-link,
@@ -424,6 +424,8 @@ a:hover .arrow {
   padding: 2rem 0;
   font-size: 0.75rem;
   color: var(--text-tertiary);
+  margin-top: auto;
+  /* Push to the very bottom of the flex container */
 }
 
 /* ─── Responsive ─── */
@@ -437,6 +439,7 @@ a:hover .arrow {
   .page {
     flex-direction: column;
   }
+
   .bento-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -447,10 +450,12 @@ a:hover .arrow {
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
   }
+
   .stats-row {
     flex-wrap: wrap;
     gap: 1rem;
   }
+
   .stat-divider {
     display: none;
   }
