@@ -14,9 +14,58 @@ import SectionHeader from "../components/SectionHeader.astro";
     <Sidebar />
 
     <main class="grid-area">
-      <!-- ═══ Pointerly ═══ -->
-
       <SectionHeader title="Currently Building 👇" align="center" />
+
+      <section class="widget-section">
+        <SectionHeader title="DalSegno" align="left">
+          <Badge text="Now in Private Beta" variant="amber" />
+        </SectionHeader>
+        <div class="bento-grid">
+          <!-- App description -->
+          <Widget colSpan={2} rowSpan={1}>
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-2">
+                <img
+                  src="/dslogo.jpg"
+                  alt="DalSegno icon"
+                  width="24"
+                  height="24"
+                />
+                <div class="text-md font-semibold text-muted">DalSegno</div>
+              </div>
+              <div>
+                <p class="text-sm text-subtle">
+                  DalSegno is a platform for music teachers, a unified place to
+                  manage their schedule, students, lessons and homeworks.
+                </p>
+              </div>
+            </div>
+          </Widget>
+
+          <!-- Early Adopters -->
+          <Widget>
+            <div class="flex flex-col items-center justify-center h-full gap-1">
+              <div class="text-[10px] font-medium text-muted uppercase">
+                Teachers in the beta
+              </div>
+              <h4 class="text-2xl font-bold">5</h4>
+              <div class="text-xs text-subtle">with 170 students in total</div>
+            </div>
+          </Widget>
+
+          <!-- App Store Rating -->
+          <Widget>
+            <div class="flex flex-col items-center justify-center h-full gap-1">
+              <div class="text-[10px] font-medium text-muted uppercase">
+                Lessons managed
+              </div>
+              <h4 class="text-2xl font-bold">2500+</h4>
+              <div class="text-xs text-subtle">in the first 6 months</div>
+            </div>
+          </Widget>
+        </div>
+      </section>
+
       <section class="widget-section">
         <SectionHeader title="Pointerly" align="left">
           <Badge text="Live on the Mac App Store" variant="emerald" />
@@ -125,56 +174,6 @@ import SectionHeader from "../components/SectionHeader.astro";
               Read the Product Log <Arrow size={10} />
             </a>
           </div>
-        </div>
-      </section>
-
-      <section class="widget-section">
-        <SectionHeader title="DalSegno" align="left">
-          <Badge text="Now in Private Beta" variant="amber" />
-        </SectionHeader>
-        <div class="bento-grid">
-          <!-- App description -->
-          <Widget colSpan={2} rowSpan={1}>
-            <div class="flex flex-col gap-2">
-              <div class="flex items-center gap-2">
-                <img
-                  src="/dslogo.jpg"
-                  alt="DalSegno icon"
-                  width="24"
-                  height="24"
-                />
-                <div class="text-md font-semibold text-muted">DalSegno</div>
-              </div>
-              <div>
-                <p class="text-sm text-subtle">
-                  DalSegno is a platform for music teachers, a unified place to
-                  manage their schedule, students, lessons and homeworks.
-                </p>
-              </div>
-            </div>
-          </Widget>
-
-          <!-- Early Adopters -->
-          <Widget>
-            <div class="flex flex-col items-center justify-center h-full gap-1">
-              <div class="text-[10px] font-medium text-muted uppercase">
-                Teachers in the beta
-              </div>
-              <h4 class="text-2xl font-bold">5</h4>
-              <div class="text-xs text-subtle">with 170 students in total</div>
-            </div>
-          </Widget>
-
-          <!-- App Store Rating -->
-          <Widget>
-            <div class="flex flex-col items-center justify-center h-full gap-1">
-              <div class="text-[10px] font-medium text-muted uppercase">
-                Lessons managed
-              </div>
-              <h4 class="text-2xl font-bold">2500+</h4>
-              <div class="text-xs text-subtle">in the first 6 months</div>
-            </div>
-          </Widget>
         </div>
       </section>
 
